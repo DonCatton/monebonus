@@ -1,0 +1,73 @@
+Options -Indexes -Includes +FollowSymLinks
+
+RewriteEngine On
+RewriteBase /
+
+DirectoryIndex index.php
+ServerSignature Off
+AddDefaultCharset utf-8
+php_value allow_url_fopen 0
+php_value session.gc_maxlifetime 3600
+php_flag display_errors Off
+
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteRule ^index.html$ index.php [L]
+
+# 7777777 домен
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} (.*)
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?bonussite.ru [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule .* - [F,L]
+
+RewriteCond %{QUERY_STRING} (eval\() [NC,OR]
+RewriteCond %{QUERY_STRING} (127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} ([a-z0-9]{2000}) [NC,OR]
+RewriteCond %{QUERY_STRING} (javascript:)(.*)(;) [NC,OR]
+RewriteCond %{QUERY_STRING} (base64_encode)(.*)(\() [NC,OR]
+RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)(.*)script(.*)(>|%3) [NC,OR]
+RewriteCond %{QUERY_STRING} (\\|\.\.\.|\.\./|~|`|<|>|\|) [NC,OR]
+RewriteCond %{QUERY_STRING} (boot\.ini|etc/passwd|self/environ) [NC,OR]
+RewriteCond %{QUERY_STRING} (thumbs?(_editor|open)?|tim(thumb)?)\.php [NC,OR]
+RewriteCond %{QUERY_STRING} (\'|\")(.*)(drop|insert|md5|select|union) [NC]
+RewriteRule .* - [F]
+
+RewriteCond %{REQUEST_METHOD} ^(connect|debug|delete|move|put|trace|track) [NC]
+RewriteRule .* - [F]
+
+<files .htaccess="">
+Order Allow,Deny
+Deny from all
+</files>
+
+<IfModule mod_alias.c>
+	RedirectMatch 403 (?i)([a-z0-9]{2000})
+	RedirectMatch 403 (?i)(https?|ftp|php):/
+	RedirectMatch 403 (?i)(base64_encode)(.*)(\()
+	RedirectMatch 403 (?i)(=\\\'|=\\%27|/\\\'/?)\.
+	RedirectMatch 403 (?i)/(\$(\&)?|\*|\"|\.|,|&|&amp;?)/?$
+	RedirectMatch 403 (?i)(\{0\}|\(/\(|\.\.\.|\+\+\+|\\\"\\\")
+	RedirectMatch 403 (?i)(~|`|<|>|:|;|,|%|\\|\s|\{|\}|\[|\]|\|)
+	RedirectMatch 403 (?i)/(=|\$&|_mm|cgi-|etc/passwd|muieblack)
+	RedirectMatch 403 (?i)(&pws=0|_vti_|\(null\)|\{\$itemURL\}|echo(.*)kae|etc/passwd|eval\(|self/environ)
+	RedirectMatch 403 (?i)\.(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rar|rdf)$
+	RedirectMatch 403 (?i)/(^$|(wp-)?config|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell)\.php
+</IfModule>
+
+RewriteRule ^wall(/?)+$ index.php?str=wall [L]
+RewriteRule ^rules(/?)+$ index.php?str=rules [L]
+RewriteRule ^bonuses(/?)+$ index.php?str=bonuses [L]
+RewriteRule ^stats(/?)+$ index.php?str=stats [L]
+RewriteRule ^usr(/?)+$ index.php?str=usr [L]
+RewriteRule ^usrs(/?)+$ index.php?str=usrs [L]
+RewriteRule ^contacts(/?)+$ index.php?str=contacts [L]
+RewriteRule ^news(/?)+$ index.php?str=news [L]
+
+RewriteRule ^exit(/?)+$ index.php?str=wall&accstr=exit [L]
+RewriteRule ^refs(/?)+$ index.php?str=wall&accstr=refs [L]
+RewriteRule ^pays(/?)+$ index.php?str=wall&accstr=pays [L]
+RewriteRule ^bonus(/?)+$ index.php?str=wall&accstr=bonus [L]
+RewriteRule ^banners(/?)+$ index.php?str=wall&accstr=banners [L]
+RewriteRule ^profile(/?)+$ index.php?str=wall&accstr=profile [L]

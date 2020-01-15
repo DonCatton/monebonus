@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+	<loc>http://bonus.evotlink.ru/</loc>
+	<lastmod>2018-11-16T12:39:38+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>http://bonus.evotlink.ru/news</loc>
+	<lastmod>2018-11-16T12:39:38+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>http://bonus.evotlink.ru/stats</loc>
+	<lastmod>2018-11-16T12:39:38+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>http://bonus.evotlink.ru/rules</loc>
+	<lastmod>2018-11-16T12:39:39+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>http://bonus.evotlink.ru/contacts</loc>
+	<lastmod>2018-11-16T12:39:39+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>http://bonus.evotlink.ru/bonuses</loc>
+	<lastmod>2018-11-16T12:39:40+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+</urlset>

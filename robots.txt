@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /css/
+Sitemap: http://bonus.evotlink.ru/sitemap.xml
